@@ -1,1 +1,51 @@
-<h1>Hola, humanos</h1>
+<h1 >{{title}}</h1>
+
+<button (click)="changeTitle()"  >Change title</button>
+<input type="text" [(ngModel)]= "motosMarca" (keydown.enter)="addMotos()">{{motosMarca}}
+<button (click)="addMotos()"  >Add</button>
+<button (click)="empty()">empty</button>
+
+
+<ul>
+  <li *ngIf="motosMarca.length === 0">
+    No hay marcas de motos
+  </li>
+  <li *ngFor="let moto of motos; index as i"> 
+    {{moto}}{{i}}
+    <button (click)="deleteItem(i)">delete</button>
+    <button (click)="updateItem(i)">update</button>
+
+  </li> 
+</ul>
+<!-- 
+<div *ngIf="motosMarca === 'alejandro'"> 
+  Mostrar Se cumplio la conidcion
+</div>
+<div *ngIf="motosMarca === 'Camilo'">
+  Es Camilo
+</div> -->
+
+<div [ngSwitch]= "motosMarca">
+<p *ngSwitchCase="'Nicolas'">Es Nicolas</p>
+<p *ngSwitchCase="'Camilo'">Es Camilo</p>
+<p *ngSwitchCase ="'alejandro'  ">Es Juan</p>
+<p *ngSwitchDefault> No coincide</p>
+</div>
+
+<ul>
+  <li *ngFor="let item of items">
+    Nombre: {{item.name }}
+    Edad: {{item.age}}
+    Single: {{item.isSingle}}
+    <!-- Imagen: {{item.avatar }} -->
+    <img [src] ="item.avatar " alt="">
+
+    
+  </li>
+
+</ul>
+
+<app-product-list></app-product-list>
+
+
+
